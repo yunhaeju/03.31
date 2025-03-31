@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Boldonse", system-ui;
+        }
+
+        .section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            min-height: 100vh;
+            background-color: rgb(234, 254, 255);
+            overflow: hidden;
+        }
+
+        .section .text {
+            position: relative;
+            color: rgb(13, 48, 135);
+            margin: 40px;
+            max-width: 800px;
+            user-select: none;
+            font-size: 1.5em; 
+        }
+
+
+        .section .text span {
+            position: relative;
+            display: inline-block; 
+            cursor: pointer; 
+        }
+
+        .section .text span.active { 
+            animation: smoke 2s linear forwards; 
+            transform-origin: bottom; 
+        }
+
+        @keyframes smoke {
+            0% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                pointer-events: none; 
+            }
+
+            100% {
+                opacity: 0;
+                filter: blur(20px);
+                transform: translateX(300px) translateY(-200px) rotate(90deg) scale(10);
+            }
+        }
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+
+    <div class="section">
+        <p class="text"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe exercitationem voluptatum voluptate! Dignissimos officiis eum eligendi repellat unde veritatis nemo aspernatur cupiditate animi blanditiis expedita illo cumque voluptatibus ea, velit in reiciendis corrupti! Dolorum magni doloribus porro, doloremque vitae deleniti saepe eligendi quisquam. Totam similique quae error quasi veniam doloremque!</p>
+    </div>
+
+
+
+
+<script>
+
+    const text = document.querySelector('.text');
+    text.innerHTML = text.textContent.replace(/\S/g,"<span>$&</span>")
+
+
+    const letters = document.querySelectorAll('span');
+    
+    for (let i=0; i<letters.length; i++) {
+        letters[i].addEventListener('mouseover', function() {  
+            letters[i].classList.add('active');
+        })         
+    }
+
+
+
+</script>
+
+
+    
+</body>
+</html>
